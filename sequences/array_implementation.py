@@ -34,7 +34,27 @@ class DynamicArray:
 
         return (c * ctypes.py_object)()
 
+    def insert(self, k, value):
+
+        if self._n == self._capacity:
+            self._resize(2 * self._capacity)
+        for j in range(self._n, k, -1):
+            self._A[j] = self._A[j-1]
+        self._A[k] = value
+        self._n += 1
+
+    def remove(self, value):
+        for k in range(self._n):
+            if self._A[k] == value:
+                for j in range(k, self._n, -1):
+                    self._A[j] = self._A[j+1]
+            self._A[n-1] = None
+            self._n = -1
+            return 
+        raise ValueError("Error not found")
+
 data = [1 , 2 , 3] 
 
 print(data.__getitem__(1))
 print(data.__len__())
+print(data.remove(1))
